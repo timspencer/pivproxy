@@ -6,8 +6,6 @@ services:
     - "4443:4443"
     volumes:
     - $PWD/secrets:/secrets
-    links:
-    - app
     environment:
       PROXY_NAME: localhost
       PROXY_URL: http://app/
