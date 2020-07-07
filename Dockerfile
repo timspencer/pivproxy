@@ -22,6 +22,7 @@ RUN cat /caCertsIssuedByfcpca.pem >> /piv-root-certs.pem
 
 RUN mkdir /secrets
 COPY proxy.conf /etc/apache2/conf.d/proxy.conf
+COPY run.sh /run.sh
 
 EXPOSE 4443
-CMD ["httpd", "-DFOREGROUND"]
+CMD ["/run.sh"]
