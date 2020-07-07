@@ -2,7 +2,7 @@ run: secrets/server.crt docker-compose.yml
 	docker-compose up
 
 build: Dockerfile proxy.conf
-	docker build .
+	docker-compose build
 
 secrets/server.crt:
 	mkdir -p secrets

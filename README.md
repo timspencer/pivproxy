@@ -12,7 +12,7 @@ Those SHAs may need to be updated if the root certs get updated.
 
 ## Building
 
-The container can be built with `docker build .`
+The container can be built with `make build`.
 
 You can test it by:
 * Editing `docker-compose.yml` and setting your PIV card user in the list.
@@ -33,6 +33,9 @@ The proxy is configred by:
   * `PROXY_NAME`:  This is the name of the proxy.  It should be the same name as in the cert
 * Ensuring that there are certs installed in /secrets/server.crt and /secrets/server.key.
   This is often done with setting a volume up or mounting a secret on /secrets.
+* (Optional) Set the `PROXY_ALL_USERS` environment variable to `true` if you want the proxy to
+  allow in _all_ users who's certs are verified, instead of just limiting it to the users in
+  `PROXY_USERS`.
 
 If those things are set up, it should run and proxy stuff over.
 
