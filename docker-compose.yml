@@ -10,6 +10,7 @@ services:
       PROXY_NAME: localhost
       PROXY_URL: http://app/
       #PROXY_ALL_USERS: 'true'
+      #PROXY_GSA_USERS: 'true'
       PROXY_USERS: '"UID=47001003358691+CN=TIMOTHY SPENCER,OU=General Services Administration,O=U.S. Government,C=US", "XXX"'
   app:
     image: logindotgov/pretend-app

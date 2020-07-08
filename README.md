@@ -36,6 +36,11 @@ The proxy is configred by:
 * (Optional) Set the `PROXY_ALL_USERS` environment variable to `true` if you want the proxy to
   allow in _all_ users who's certs are verified, instead of just limiting it to the users in
   `PROXY_USERS`.
+* (Optional) Set the `PROXY_GSA_USERS` environment variable to `true` if you want the proxy to
+  allow in all users who have GSA issued certs instead of just limiting it to the users in
+  `PROXY_USERS`.  I'm not sure what happens if you set this at the same time as `PROXY_ALL_USERS`
+  because I do not have a PIV card that is not GSA-issued.  I would just set one or the other
+  but not both.
 
 If those things are set up, it should run and proxy stuff over.
 
