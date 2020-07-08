@@ -27,20 +27,18 @@ You can test it by:
 The proxy is configred by:
 * Setting three environment variables:
   * `PROXY_URL`:  This is the URL of the app that you want to proxy to, like https://foo.local/
-  * `PROXY_USERS`: This is the list of users allowed into this service, double quoted, comma delimited.
-    Formatting is important here, because the data gets edited directly into the proxy.conf file.
-    An example of this is `"UID=XXX+CN=TIM SPENCER,OU=General Services Administration,O=U.S. Government,C=US", "UID=..."`.
   * `PROXY_NAME`:  This is the name of the proxy.  It should be the same name as in the cert
+  * _ONE_ of:
+	* `PROXY_USERS`: This is the list of users allowed into this service, double quoted, comma delimited.
+	  Formatting is important here, because the data gets edited directly into the proxy.conf file.
+      An example of this is `"UID=XXX+CN=TIM SPENCER,OU=General Services Administration,O=U.S. Government,C=US", "UID=..."`.
+	* `PROXY_ALL_USERS`: Set the `PROXY_ALL_USERS` environment variable to `true` if you want the proxy to
+	  allow in _all_ users who's certs are verified to have been blessed by the
+	  https://fpki.idmanagement.gov/crls/ CA.
+	* `PROXY_GSA_USERS`: Set the `PROXY_GSA_USERS` environment variable to `true` if you want the proxy to
+	  allow in all users who have GSA issued certs.
 * Ensuring that there are certs installed in /secrets/server.crt and /secrets/server.key.
   This is often done with setting a volume up or mounting a secret on /secrets.
-* (Optional) Set the `PROXY_ALL_USERS` environment variable to `true` if you want the proxy to
-  allow in _all_ users who's certs are verified, instead of just limiting it to the users in
-  `PROXY_USERS`.
-* (Optional) Set the `PROXY_GSA_USERS` environment variable to `true` if you want the proxy to
-  allow in all users who have GSA issued certs instead of just limiting it to the users in
-  `PROXY_USERS`.  I'm not sure what happens if you set this at the same time as `PROXY_ALL_USERS`
-  because I do not have a PIV card that is not GSA-issued.  I would just set one or the other
-  but not both.
 
 If those things are set up, it should run and proxy stuff over.
 
